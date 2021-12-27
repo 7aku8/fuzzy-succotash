@@ -16,6 +16,7 @@ Game::Game(QWidget *parent) :
     win = false;
     tie = false;
     can_play = true;
+    turns = 0;
     no_win.reserve(9);
 
     for (size_t i = 0; i < 9; i++) {
@@ -105,6 +106,7 @@ void Game::set_turn(int field_number) {
     const int y = (field_number + 2) % 3;
     const int x = (field_number - 1) / 3;
 
+    turns++;
     board[x][y] = turn;
     fill_field(field_number, turn);
 
