@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
             board[i][j] = Ui::Field::None;
         }
     }
+    game = nullptr;
     win = false;
     tie = false;
     can_play = false;
@@ -67,7 +68,7 @@ void MainWindow::game_start() {
     std::cout << "starting the game" << std::endl;
 }
 
-void MainWindow::set1() { set_turn(1); };
+void MainWindow::set1() { openNewWindow(); };
 void MainWindow::set2() { set_turn(2); };
 void MainWindow::set3() { set_turn(3); };
 void MainWindow::set4() { set_turn(4); };
@@ -99,5 +100,21 @@ void MainWindow::set_turn(int field_number) {
         turn = Ui::Field::X;
     } else {
         turn = Ui::Field::O;
+    }
+}
+
+void MainWindow::game_ended() {
+    std::cout << "game ended!!!" << std::endl;
+
+    delete game;
+    game = nullptr;
+}
+
+void MainWindow::openNewWindow() {
+    if (game == nullptr) {
+        game = new Game();
+
+        game->show();
+        connect(game, SIGNAL(closed()), this, SLOT(game_ended()));
     }
 }

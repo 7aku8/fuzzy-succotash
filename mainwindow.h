@@ -6,6 +6,8 @@
 #include <QPushButton>
 #include <cstdlib>
 
+#include "game.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
     class MainWindow;
@@ -33,6 +35,9 @@ public slots:
     void set8();
     void set9();
 
+    void game_ended();
+    void openNewWindow();
+
 private:
     Ui::MainWindow *ui;
     Ui::Field board[3][3];
@@ -48,5 +53,7 @@ private:
 
     void set_turn(int field_number);
     void fill_field(int field_number, Ui::Field field);
+
+    Game *game;
 };
 #endif // MAINWINDOW_H
