@@ -15,7 +15,7 @@ Game::Game(QWidget *parent) :
     }
     win = false;
     tie = false;
-    can_play = false;
+    can_play = true;
     no_win.reserve(9);
 
     for (size_t i = 0; i < 9; i++) {
@@ -33,11 +33,8 @@ Game::Game(QWidget *parent) :
     buttons[8] = ui->button_9;
 
     turn = Ui::Field::None;
-    turn_count = 0;
 
     // game initialization
-    QObject::connect(ui->start_game, SIGNAL(clicked()), this, SLOT(game_start()));
-
     QObject::connect(ui->button_1, SIGNAL(pressed()), SLOT(set1()));
     QObject::connect(ui->button_2, SIGNAL(pressed()), SLOT(set2()));
     QObject::connect(ui->button_3, SIGNAL(pressed()), SLOT(set3()));
@@ -47,6 +44,8 @@ Game::Game(QWidget *parent) :
     QObject::connect(ui->button_7, SIGNAL(pressed()), SLOT(set7()));
     QObject::connect(ui->button_8, SIGNAL(pressed()), SLOT(set8()));
     QObject::connect(ui->button_9, SIGNAL(pressed()), SLOT(set9()));
+
+    init_game();
 }
 
 Game::~Game()
@@ -59,11 +58,43 @@ void Game::closeEvent (QCloseEvent *event){
     event->accept();
 }
 
+void Game::set1() { set_turn(1); }
+void Game::set2() { set_turn(2); }
+void Game::set3() { set_turn(3); }
+void Game::set4() { set_turn(4); }
+void Game::set5() { set_turn(5); }
+void Game::set6() { set_turn(6); }
+void Game::set7() { set_turn(7); }
+void Game::set8() { set_turn(8); }
+void Game::set9() { set_turn(9); }
+
+void Game::init_game() {
+    // set random character to start game
+    const float rand_number = rand();
+
+    if (rand_number < 0.5) {
+        turn = Ui::Field::X;
+    } else {
+        turn = Ui::Field::O;
+    }
+    set_turn_indicator(turn);
+}
+
 void Game::fill_field(int field_number, Ui::Field field) {
     if (field == Ui::Field::X) {
         buttons[field_number - 1]->setText("X");
     } else if (field == Ui::Field::O) {
         buttons[field_number - 1]->setText("O");
+    }
+
+    buttons[field_number - 1]->setDisabled(true);
+}
+
+void Game::set_turn_indicator(Ui::Field turn) {
+    if (turn == Ui::Field::X) {
+        ui->whos_turn->setText("X");
+    } else {
+        ui->whos_turn->setText("O");
     }
 }
 
@@ -82,4 +113,6 @@ void Game::set_turn(int field_number) {
     } else {
         turn = Ui::Field::O;
     }
+
+    set_turn_indicator(turn);
 }
