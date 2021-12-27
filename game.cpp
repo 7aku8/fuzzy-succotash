@@ -1,6 +1,8 @@
 #include "game.h"
 #include "ui_game.h"
 
+#include "minmax.cpp"
+
 Game::Game(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Game)
@@ -77,6 +79,10 @@ void Game::set_player_character(Ui::Field character) {
     } else {
         ui->your_character->setText("O");
     }
+
+    if (character != turn) {
+        computer_turn();
+    }
 }
 
 void Game::init_game() {
@@ -111,7 +117,7 @@ void Game::set_turn_indicator(Ui::Field turn) {
 
 void Game::set_turn(int field_number) {
     if (!can_play) { return; }
-    if (turn != player_character) { return; }
+    if (turn != player_character) { return computer_turn(); }
 
     std::cout << field_number << std::endl;
     const int y = (field_number + 2) % 3;
@@ -121,11 +127,37 @@ void Game::set_turn(int field_number) {
     board[x][y] = turn;
     fill_field(field_number, turn);
 
+    switch_turn();
+    set_turn_indicator(turn);
+
+    computer_turn();
+}
+
+void Game::switch_turn() {
     if (turn == Ui::Field::O) {
         turn = Ui::Field::X;
     } else {
         turn = Ui::Field::O;
     }
+}
 
+void Game::computer_turn() {
+    Ui::Field opponent;
+    if (player_character == Ui::Field::O) {
+        opponent = Ui::Field::X;
+    } else {
+        opponent = Ui::Field::O;
+    }
+
+    Move bestMove = findBestMove(board, player_character, opponent);
+
+    std::cout << "y: " << bestMove.y << ",  x: " << bestMove.x << std::endl;
+
+    turns++;
+    board[bestMove.x][bestMove.y] = turn;
+    std::cout << "tutaj " << 3 * bestMove.x + bestMove.y << std::endl;
+    fill_field(3 * bestMove.x + bestMove.y + 1, turn);
+
+    switch_turn();
     set_turn_indicator(turn);
 }

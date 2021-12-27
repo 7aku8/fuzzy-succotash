@@ -58,6 +58,9 @@ private:
     void fill_field(int field_number, Ui::Field field);
     void set_turn_indicator(Ui::Field turn);
     void init_game();
+
+    void switch_turn();
+    void computer_turn();
 };
 
 #endif // GAME_H

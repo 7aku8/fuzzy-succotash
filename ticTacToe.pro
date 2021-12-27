@@ -12,6 +12,7 @@ SOURCES += \
     game.cpp \
     main.cpp \
     mainwindow.cpp \
+    minmax.cpp \
     selectcharacter.cpp
 
 HEADERS += \
