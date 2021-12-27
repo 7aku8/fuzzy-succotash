@@ -6,24 +6,37 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>211</width>
-    <height>200</height>
+    <width>270</width>
+    <height>359</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>TicTacToe JakuWolak</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="gridLayoutWidget">
+   <widget class="QPushButton" name="start_game">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>51</width>
-      <height>151</height>
+      <x>100</x>
+      <y>290</y>
+      <width>89</width>
+      <height>25</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="board" rowstretch="0,0,0,0,0" columnstretch="0">
+    <property name="text">
+     <string>Start game</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget_4">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>0</y>
+      <width>91</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="board_1" rowstretch="0,0,0" columnstretch="0">
      <property name="sizeConstraint">
       <enum>QLayout::SetMaximumSize</enum>
      </property>
@@ -42,13 +55,13 @@
      <property name="spacing">
       <number>5</number>
      </property>
-     <item row="0" column="0">
-      <widget class="QPushButton" name="pushButton">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>25</height>
-        </size>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="button_9">
+       <property name="font">
+        <font>
+         <pointsize>40</pointsize>
+         <bold>true</bold>
+        </font>
        </property>
        <property name="text">
         <string/>
@@ -56,14 +69,26 @@
       </widget>
      </item>
      <item row="1" column="0">
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="button_6">
+       <property name="font">
+        <font>
+         <pointsize>40</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="text">
         <string/>
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="QPushButton" name="pushButton_3">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="button_3">
+       <property name="font">
+        <font>
+         <pointsize>40</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -71,13 +96,13 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="gridLayoutWidget_2">
+   <widget class="QWidget" name="gridLayoutWidget_5">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>0</x>
       <y>0</y>
-      <width>68</width>
-      <height>151</height>
+      <width>91</width>
+      <height>271</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="board_2" rowstretch="0,0,0" columnstretch="0">
@@ -99,13 +124,13 @@
      <property name="spacing">
       <number>5</number>
      </property>
-     <item row="0" column="0">
-      <widget class="QPushButton" name="pushButton_4">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>25</height>
-        </size>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="button_7">
+       <property name="font">
+        <font>
+         <pointsize>40</pointsize>
+         <bold>true</bold>
+        </font>
        </property>
        <property name="text">
         <string/>
@@ -113,14 +138,26 @@
       </widget>
      </item>
      <item row="1" column="0">
-      <widget class="QPushButton" name="pushButton_5">
+      <widget class="QPushButton" name="button_4">
+       <property name="font">
+        <font>
+         <pointsize>40</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="text">
         <string/>
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="QPushButton" name="pushButton_6">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="button_1">
+       <property name="font">
+        <font>
+         <pointsize>40</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -128,13 +165,13 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="gridLayoutWidget_3">
+   <widget class="QWidget" name="gridLayoutWidget_6">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>90</x>
       <y>0</y>
-      <width>68</width>
-      <height>151</height>
+      <width>91</width>
+      <height>271</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="board_3" rowstretch="0,0,0" columnstretch="0">
@@ -156,13 +193,13 @@
      <property name="spacing">
       <number>5</number>
      </property>
-     <item row="0" column="0">
-      <widget class="QPushButton" name="pushButton_7">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>25</height>
-        </size>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="button_8">
+       <property name="font">
+        <font>
+         <pointsize>40</pointsize>
+         <bold>true</bold>
+        </font>
        </property>
        <property name="text">
         <string/>
@@ -170,14 +207,26 @@
       </widget>
      </item>
      <item row="1" column="0">
-      <widget class="QPushButton" name="pushButton_8">
+      <widget class="QPushButton" name="button_5">
+       <property name="font">
+        <font>
+         <pointsize>40</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="text">
         <string/>
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="QPushButton" name="pushButton_9">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="button_2">
+       <property name="font">
+        <font>
+         <pointsize>40</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -191,7 +240,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>211</width>
+     <width>270</width>
      <height>22</height>
     </rect>
    </property>
