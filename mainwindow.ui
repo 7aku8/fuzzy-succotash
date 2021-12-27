@@ -6,64 +6,180 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>254</width>
-    <height>199</height>
+    <width>211</width>
+    <height>200</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>TicTacToe JakuWolak</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="verticalLayoutWidget">
+   <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>601</width>
-      <height>431</height>
+      <width>51</width>
+      <height>151</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QGroupBox" name="groupBox">
-       <property name="title">
-        <string>TicTacToe</string>
+    <layout class="QGridLayout" name="board" rowstretch="0,0,0,0,0" columnstretch="0">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMaximumSize</enum>
+     </property>
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <property name="topMargin">
+      <number>10</number>
+     </property>
+     <property name="rightMargin">
+      <number>10</number>
+     </property>
+     <property name="bottomMargin">
+      <number>10</number>
+     </property>
+     <property name="spacing">
+      <number>5</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QPushButton" name="pushButton">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>25</height>
+        </size>
        </property>
-       <widget class="QPushButton" name="pushButton">
-        <property name="geometry">
-         <rect>
-          <x>60</x>
-          <y>40</y>
-          <width>121</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Singleplayer</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_2">
-        <property name="geometry">
-         <rect>
-          <x>60</x>
-          <y>100</y>
-          <width>121</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Multiplayer</string>
-        </property>
-       </widget>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label">
        <property name="text">
         <string/>
        </property>
-       <property name="textFormat">
-        <enum>Qt::RichText</enum>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>0</y>
+      <width>68</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="board_2" rowstretch="0,0,0" columnstretch="0">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMaximumSize</enum>
+     </property>
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <property name="topMargin">
+      <number>10</number>
+     </property>
+     <property name="rightMargin">
+      <number>10</number>
+     </property>
+     <property name="bottomMargin">
+      <number>10</number>
+     </property>
+     <property name="spacing">
+      <number>5</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>25</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="pushButton_5">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="pushButton_6">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>0</y>
+      <width>68</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="board_3" rowstretch="0,0,0" columnstretch="0">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMaximumSize</enum>
+     </property>
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <property name="topMargin">
+      <number>10</number>
+     </property>
+     <property name="rightMargin">
+      <number>10</number>
+     </property>
+     <property name="bottomMargin">
+      <number>10</number>
+     </property>
+     <property name="spacing">
+      <number>5</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QPushButton" name="pushButton_7">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>25</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="pushButton_8">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="pushButton_9">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>
@@ -75,7 +191,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>254</width>
+     <width>211</width>
      <height>22</height>
     </rect>
    </property>
