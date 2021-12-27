@@ -11,7 +11,6 @@
 QT_BEGIN_NAMESPACE
 namespace Ui {
     class MainWindow;
-    enum Field { None = ' ', X = 'X', O = 'O'};
 }
 QT_END_NAMESPACE
 
