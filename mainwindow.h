@@ -5,6 +5,7 @@
 #include <iostream>
 #include <QPushButton>
 
+#include "selectcharacter.h"
 #include "game.h"
 
 QT_BEGIN_NAMESPACE
@@ -22,12 +23,18 @@ public:
     ~MainWindow();
 
 public slots:
-    void start_game();
+    void select_character();
+    void start_game_with_x();
+    void start_game_with_o();
     void game_ended();
+    void character_select_closed();
 
 private:
     Ui::MainWindow *ui;
 
     Game *game;
+    SelectCharacter *character;
+
+    void start_game(Ui::Field character);
 };
 #endif // MAINWINDOW_H

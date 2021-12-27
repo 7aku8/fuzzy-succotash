@@ -69,6 +69,10 @@ void Game::set7() { set_turn(7); }
 void Game::set8() { set_turn(8); }
 void Game::set9() { set_turn(9); }
 
+void Game::set_player_character(Ui::Field character) {
+    player_character = character;
+}
+
 void Game::init_game() {
     // set random character to start game
     const float rand_number = rand();

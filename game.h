@@ -7,9 +7,10 @@
 #include <QPushButton>
 #include <cstdlib>
 
+#include "field.h"
+
 namespace Ui {
     class Game;
-    enum Field { None = ' ', X = 'X', O = 'O'};
 }
 
 class Game : public QMainWindow
@@ -19,6 +20,8 @@ class Game : public QMainWindow
 public:
     explicit Game(QWidget *parent = nullptr);
     ~Game();
+
+    void set_player_character(Ui::Field character);
 
 public slots:
     void set1();
@@ -39,10 +42,12 @@ private:
 
     void closeEvent(QCloseEvent *event);
 
+    Ui::Field player_character;
     Ui::Field board[3][3];
     QPushButton * buttons[9];
     bool win;
     bool tie;
+    int turns;
     std::vector<int> no_win;
 
     bool can_play;

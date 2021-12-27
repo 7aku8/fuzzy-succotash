@@ -11,15 +11,19 @@ CONFIG += c++11
 SOURCES += \
     game.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    selectcharacter.cpp
 
 HEADERS += \
+    field.h \
     game.h \
-    mainwindow.h
+    mainwindow.h \
+    selectcharacter.h
 
 FORMS += \
     game.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    selectcharacter.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
