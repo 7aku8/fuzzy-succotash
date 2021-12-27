@@ -41,7 +41,6 @@ void MainWindow::start_game_with_x() {
 }
 
 void MainWindow::start_game(Ui::Field character) {
-    std::cout << character << std::endl;
     if (game == nullptr) {
         game = new Game();
 
@@ -53,8 +52,6 @@ void MainWindow::start_game(Ui::Field character) {
 }
 
 void MainWindow::game_ended() {
-    std::cout << "game ended!!!" << std::endl;
-
     ui->start_game_button->setDisabled(false);
 
     delete game;

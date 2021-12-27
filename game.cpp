@@ -71,6 +71,12 @@ void Game::set9() { set_turn(9); }
 
 void Game::set_player_character(Ui::Field character) {
     player_character = character;
+
+    if (player_character == Ui::Field::X) {
+        ui->your_character->setText("X");
+    } else {
+        ui->your_character->setText("O");
+    }
 }
 
 void Game::init_game() {
@@ -105,6 +111,7 @@ void Game::set_turn_indicator(Ui::Field turn) {
 
 void Game::set_turn(int field_number) {
     if (!can_play) { return; }
+    if (turn != player_character) { return; }
 
     std::cout << field_number << std::endl;
     const int y = (field_number + 2) % 3;
