@@ -149,13 +149,10 @@ void Game::computer_turn() {
         opponent = Ui::Field::O;
     }
 
-    Move bestMove = findBestMove(board, player_character, opponent);
-
-    std::cout << "y: " << bestMove.y << ",  x: " << bestMove.x << std::endl;
-    std::cout << "field: " << 3 * bestMove.y + bestMove.x + 1 << std::endl;
+    Move bestMove = find_best_move(board, player_character, opponent);
 
     turns++;
-    board[bestMove.x][bestMove.y] = turn;
+    board[bestMove.y][bestMove.x] = turn;
     fill_field(3 * bestMove.y + bestMove.x + 1, turn);
 
     determine_winner(bestMove.x, bestMove.y, turn);
@@ -212,7 +209,7 @@ void Game::determine_winner(int x, int y, Ui::Field character) {
 
 void Game::set_draw() {
     can_play = false;
-    std::cout << "DRAW";
+    std::cout << "DRAW" << std::endl;
 }
 
 void Game::set_winner(Ui::Field winner) {
