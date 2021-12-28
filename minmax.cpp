@@ -116,7 +116,7 @@ Move find_best_move(Ui::Field board[3][3], Ui::Field player, Ui::Field opponent)
             if (board[i][j] == Ui::Field::None) {
                 board[i][j] = player;
 
-                int move_val = minmax(board, 0, false, player, opponent);
+                int move_val = minmax(board, 2, false, player, opponent);
 
                 board[i][j] = Ui::Field::None;
 

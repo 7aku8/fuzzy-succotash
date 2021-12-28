@@ -88,6 +88,12 @@ void Game::init_game() {
     // set random character to start game
     const float rand_number = rand();
 
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            board[i][j] = Ui::Field::None;
+        }
+    }
+
     if (rand_number < 0.5) {
         turn = Ui::Field::X;
     } else {
@@ -118,7 +124,6 @@ void Game::set_turn(int field_number) {
     if (!can_play) { return; }
     if (turn != player_character) { return computer_turn(); }
 
-    std::cout << field_number << std::endl;
     const int y = (field_number + 2) % 3;
     const int x = (field_number - 1) / 3;
 
@@ -142,6 +147,8 @@ void Game::switch_turn() {
 }
 
 void Game::computer_turn() {
+    if (!can_play) { return; }
+
     Ui::Field opponent;
     if (player_character == Ui::Field::O) {
         opponent = Ui::Field::X;
@@ -161,44 +168,20 @@ void Game::computer_turn() {
 }
 
 void Game::determine_winner(int x, int y, Ui::Field character) {
-    for (int i = 0; i < 3; i++) {
-        if (board[x][i] != character) {
-            break;
-        }
-        if (i == 2) {
-            return set_winner(character);
-        }
+    if (board[y][0] == board[y][1] && board[y][1] == board[y][2] && board[y][0] == character) {
+        return set_winner(character);
     }
 
-    for (int i = 0; i < 3; i++) {
-        if (board[i][y] != character) {
-            break;
-        }
-        if (i == 2) {
-            return set_winner(character);
-        }
+    if (board[0][x] == board[1][x] && board[1][x] == board[2][x] && board[0][x] == character) {
+        return set_winner(character);
     }
 
-    if (x == y) {
-        for (int i = 0; i < 3; i++) {
-            if (board[i][i] != character) {
-                break;
-            }
-            if (i == 2) {
-                return set_winner(character);
-            }
-        }
+    if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] == character) {
+        return set_winner(character);
     }
 
-    if (x + y == 2) {
-        for (int i = 0; i < 3; i++) {
-            if (board[i][2 - i] != character) {
-                break;
-            }
-            if (i ==2) {
-                return set_winner(character);
-            }
-        }
+    if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] == character) {
+        return set_winner(character);
     }
 
     // draw
@@ -208,11 +191,11 @@ void Game::determine_winner(int x, int y, Ui::Field character) {
 }
 
 void Game::set_draw() {
-    can_play = false;
     std::cout << "DRAW" << std::endl;
+    can_play = false;
 }
 
 void Game::set_winner(Ui::Field winner) {
+    std::cout << "winner" << winner << std::endl;
     can_play = false;
-    std::cout << "winner" << winner;
 }
