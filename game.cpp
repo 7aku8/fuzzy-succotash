@@ -19,11 +19,8 @@ Game::Game(QWidget *parent) :
     tie = false;
     can_play = true;
     turns = 0;
-    no_win.reserve(9);
-
-    for (size_t i = 0; i < 9; i++) {
-        no_win.push_back(0);
-    }
+    draw = false;
+    winner = Ui::Field::None;
 
     buttons[0] = ui->button_1;
     buttons[1] = ui->button_2;
@@ -47,6 +44,8 @@ Game::Game(QWidget *parent) :
     QObject::connect(ui->button_7, SIGNAL(pressed()), SLOT(set7()));
     QObject::connect(ui->button_8, SIGNAL(pressed()), SLOT(set8()));
     QObject::connect(ui->button_9, SIGNAL(pressed()), SLOT(set9()));
+
+    srand( (unsigned)time(0) );
 
     init_game();
 }
@@ -127,6 +126,7 @@ void Game::set_turn(int field_number) {
     board[x][y] = turn;
     fill_field(field_number, turn);
 
+    determine_winner(x, y, turn);
     switch_turn();
     set_turn_indicator(turn);
 
@@ -152,12 +152,70 @@ void Game::computer_turn() {
     Move bestMove = findBestMove(board, player_character, opponent);
 
     std::cout << "y: " << bestMove.y << ",  x: " << bestMove.x << std::endl;
+    std::cout << "field: " << 3 * bestMove.y + bestMove.x + 1 << std::endl;
 
     turns++;
     board[bestMove.x][bestMove.y] = turn;
-    std::cout << "tutaj " << 3 * bestMove.x + bestMove.y << std::endl;
-    fill_field(3 * bestMove.x + bestMove.y + 1, turn);
+    fill_field(3 * bestMove.y + bestMove.x + 1, turn);
 
+    determine_winner(bestMove.x, bestMove.y, turn);
     switch_turn();
     set_turn_indicator(turn);
+}
+
+void Game::determine_winner(int x, int y, Ui::Field character) {
+    for (int i = 0; i < 3; i++) {
+        if (board[x][i] != character) {
+            break;
+        }
+        if (i == 2) {
+            return set_winner(character);
+        }
+    }
+
+    for (int i = 0; i < 3; i++) {
+        if (board[i][y] != character) {
+            break;
+        }
+        if (i == 2) {
+            return set_winner(character);
+        }
+    }
+
+    if (x == y) {
+        for (int i = 0; i < 3; i++) {
+            if (board[i][i] != character) {
+                break;
+            }
+            if (i == 2) {
+                return set_winner(character);
+            }
+        }
+    }
+
+    if (x + y == 2) {
+        for (int i = 0; i < 3; i++) {
+            if (board[i][2 - i] != character) {
+                break;
+            }
+            if (i ==2) {
+                return set_winner(character);
+            }
+        }
+    }
+
+    // draw
+    if (turns == (pow(3, 2) -1)) {
+        return set_draw();
+    }
+}
+
+void Game::set_draw() {
+    can_play = false;
+    std::cout << "DRAW";
+}
+
+void Game::set_winner(Ui::Field winner) {
+    can_play = false;
+    std::cout << "winner" << winner;
 }

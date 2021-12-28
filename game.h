@@ -6,6 +6,7 @@
 #include <QCloseEvent>
 #include <QPushButton>
 #include <cstdlib>
+#include <cmath>
 
 #include "field.h"
 
@@ -48,7 +49,9 @@ private:
     bool win;
     bool tie;
     int turns;
-    std::vector<int> no_win;
+
+    bool draw;
+    Ui::Field winner;
 
     bool can_play;
 
@@ -61,6 +64,9 @@ private:
 
     void switch_turn();
     void computer_turn();
+    void determine_winner(int x, int y, Ui::Field character);
+    void set_draw();
+    void set_winner(Ui::Field winner);
 };
 
 #endif // GAME_H

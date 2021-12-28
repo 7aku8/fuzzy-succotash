@@ -9,7 +9,7 @@ struct Move
     int y, x;
 };
 
-bool isMovesLeft(Ui::Field board[3][3])
+bool is_moves_left(Ui::Field board[3][3])
 {
     for (int i = 0; i<3; i++)
         for (int j = 0; j<3; j++)
@@ -18,8 +18,6 @@ bool isMovesLeft(Ui::Field board[3][3])
     return false;
 }
 
-// This is the evaluation function as discussed
-// in the previous article ( http://goo.gl/sJgv68 )
 int evaluate(Ui::Field b[3][3], Ui::Field player, Ui::Field opponent)
 {
     // Checking for Rows for X or O victory.
@@ -70,9 +68,6 @@ int evaluate(Ui::Field b[3][3], Ui::Field player, Ui::Field opponent)
     return 0;
 }
 
-// This is the minimax function. It considers all
-// the possible ways the game can go and returns
-// the value of the board
 int minimax(Ui::Field board[3][3], int depth, bool isMax, Ui::Field player, Ui::Field opponent)
 {
     int score = evaluate(board, player, opponent);
@@ -89,7 +84,7 @@ int minimax(Ui::Field board[3][3], int depth, bool isMax, Ui::Field player, Ui::
 
     // If there are no more moves and no winner then
     // it is a tie
-    if (isMovesLeft(board)==false)
+    if (is_moves_left(board)==false)
         return 0;
 
     // If this maximizer's move
@@ -151,7 +146,7 @@ int minimax(Ui::Field board[3][3], int depth, bool isMax, Ui::Field player, Ui::
     }
 }
 
-// This will return the best possible move for the player
+
 Move findBestMove(Ui::Field board[3][3], Ui::Field player, Ui::Field opponent)
 {
     int bestVal = -1000;
@@ -159,29 +154,18 @@ Move findBestMove(Ui::Field board[3][3], Ui::Field player, Ui::Field opponent)
     bestMove.y = -1;
     bestMove.x = -1;
 
-    // Traverse all cells, evaluate minimax function for
-    // all empty cells. And return the cell with optimal
-    // value.
     for (int i = 0; i<3; i++)
     {
         for (int j = 0; j<3; j++)
         {
-            // Check if cell is empty
             if (board[i][j]==Ui::Field::None)
             {
-                // Make the move
                 board[i][j] = player;
 
-                // compute evaluation function for this
-                // move.
-                int moveVal = minimax(board, 0, false, player, opponent);
+                int moveVal = minimax(board, 2, false, player, opponent);
 
-                // Undo the move
                 board[i][j] = Ui::Field::None;
 
-                // If the value of the current move is
-                // more than the best value, then update
-                // best/
                 if (moveVal > bestVal)
                 {
                     bestMove.y = i;
@@ -191,9 +175,6 @@ Move findBestMove(Ui::Field board[3][3], Ui::Field player, Ui::Field opponent)
             }
         }
     }
-
-    printf("The value of the best Move is : %d\n\n",
-            bestVal);
 
     return bestMove;
 }
