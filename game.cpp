@@ -185,9 +185,14 @@ void Game::determine_winner(int x, int y, Ui::Field character) {
     }
 
     // draw
-    if (turns == (pow(3, 2) -1)) {
-        return set_draw();
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (board[i][j] == Ui::Field::None) {
+                return;
+            }
+        }
     }
+    return set_draw();
 }
 
 void Game::set_draw() {
