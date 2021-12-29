@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>271</width>
-    <height>438</height>
+    <height>412</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -42,8 +42,8 @@
      <property name="spacing">
       <number>5</number>
      </property>
-     <item row="2" column="0">
-      <widget class="QPushButton" name="button_8">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="button_2">
        <property name="font">
         <font>
          <pointsize>40</pointsize>
@@ -68,8 +68,8 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
-      <widget class="QPushButton" name="button_2">
+     <item row="2" column="0">
+      <widget class="QPushButton" name="button_8">
        <property name="font">
         <font>
          <pointsize>40</pointsize>
@@ -285,28 +285,35 @@
       <number>20</number>
      </property>
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="label_4">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>30</height>
+        </size>
+       </property>
        <property name="text">
         <string>Winner:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="winner">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
+      <widget class="QLabel" name="winner">
        <property name="maximumSize">
         <size>
-         <width>30</width>
+         <width>16777215</width>
          <height>30</height>
         </size>
        </property>
        <property name="font">
         <font>
-         <pointsize>16</pointsize>
+         <family>Tlwg Typo</family>
+         <pointsize>14</pointsize>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
        </property>
        <property name="text">
         <string/>
@@ -362,16 +369,6 @@
      </item>
     </layout>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>271</width>
-     <height>22</height>
-    </rect>
-   </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

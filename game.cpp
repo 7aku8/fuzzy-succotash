@@ -45,7 +45,7 @@ Game::Game(QWidget *parent) :
     QObject::connect(ui->button_8, SIGNAL(pressed()), SLOT(set8()));
     QObject::connect(ui->button_9, SIGNAL(pressed()), SLOT(set9()));
 
-    srand( (unsigned)time(0) );
+    srand (time(NULL));
 
     init_game();
 }
@@ -86,7 +86,7 @@ void Game::set_player_character(Ui::Field character) {
 
 void Game::init_game() {
     // set random character to start game
-    const float rand_number = rand();
+    float rand_number = rand() % 10;
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
@@ -94,7 +94,7 @@ void Game::init_game() {
         }
     }
 
-    if (rand_number < 0.5) {
+    if (rand_number < 5) {
         turn = Ui::Field::X;
     } else {
         turn = Ui::Field::O;
@@ -196,11 +196,12 @@ void Game::determine_winner(int x, int y, Ui::Field character) {
 }
 
 void Game::set_draw() {
-    std::cout << "DRAW" << std::endl;
+    ui->winner->setText("DRAW!");
     can_play = false;
 }
 
 void Game::set_winner(Ui::Field winner) {
-    std::cout << "winner" << winner << std::endl;
+    QString text(QChar::fromLatin1(char(winner)));
+    ui->winner->setText(text);
     can_play = false;
 }

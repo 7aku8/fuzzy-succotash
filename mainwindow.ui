@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Awesome TicTacToe</string>
+   <string>TicTacToe</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="logo">
@@ -60,7 +60,6 @@
       <widget class="QPushButton" name="start_game_button">
        <property name="font">
         <font>
-         <family>Tlwg Typo</family>
          <pointsize>17</pointsize>
          <bold>false</bold>
         </font>

@@ -7,6 +7,9 @@
 #include <QPushButton>
 #include <cstdlib>
 #include <cmath>
+#include <stdlib.h>
+#include <time.h>
+#include <stdio.h>
 
 #include "field.h"
 
